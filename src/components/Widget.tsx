@@ -8,8 +8,10 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
+import tailwindStyles from "../index.css?inline";
 
-const FeedbackWidget = () => {
+
+const Widget = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [step, setStep] = useState(0)
   const [rating, setRating] = useState(0)
@@ -36,6 +38,8 @@ const FeedbackWidget = () => {
   const ratingLabels = ["Poor", "Fair", "Good", "Very Good", "Excellent"]
 
   return (
+    <>
+  <style>{tailwindStyles}</style>
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild>
         <Button
@@ -47,6 +51,8 @@ const FeedbackWidget = () => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[90vw] max-w-md p-0">
+  <style>{tailwindStyles}</style>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -171,6 +177,7 @@ const FeedbackWidget = () => {
         </motion.div>
       </PopoverContent>
     </Popover>
+    </>
   )
 }
 
@@ -213,5 +220,5 @@ function CheckCircleIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-export default FeedbackWidget
+export default Widget
 
